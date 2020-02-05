@@ -14,12 +14,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rBody2d;
     private bool onGround = false;
     private bool colGround = false;
+    private Animator animator;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rBody2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,15 @@ public class PlayerController : MonoBehaviour
     {
         colGround = ColGroundChecker();
         onGround = OnGroundChecker();
+
+        if (onGround)
+        {
+            animator.SetFloat("JumpForce", -1.0f);
+        }
+        else
+        {
+            animator.SetFloat("JumpForce", 1.0f);
+        }
 
         if (!colGround)
         {
@@ -40,7 +51,9 @@ public class PlayerController : MonoBehaviour
 
         if (onGround && Input.GetAxis("Jump") > 0)
         {
-            rBody2d.velocity = new Vector2(0.0f, upForce);
+
+            //rBody2d.velocity = new Vector2(0.0f, upForce);
+            rBody2d.AddForce(new Vector2(0, upForce), ForceMode2D.Impulse);
         }
 
     }

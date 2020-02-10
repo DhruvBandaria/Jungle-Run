@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCheckerRadius = 0.15f;
     [SerializeField] private Transform groundChecker;
     [SerializeField] private Transform colGroundChecker;
+    [SerializeField] private GameObject loseColider;
 
     private Rigidbody2D rBody2d;
     private bool onGround = false;
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
     {
         colGround = ColGroundChecker();
         onGround = OnGroundChecker();
+
+        loseColider.transform.position = new Vector3(transform.position.x, loseColider.transform.position.y, loseColider.transform.position.z);
 
         if (onGround)
         {

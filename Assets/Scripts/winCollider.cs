@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoseScript : MonoBehaviour
+public class winCollider : MonoBehaviour
 {
     private SceneLoader sc;
     void Start()
@@ -12,11 +12,11 @@ public class LoseScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
         if (collision.gameObject.tag == "Player")
         {
             //Debug.Log("Collision");
-            sc.LoadLoseScene();
+            sc.LoadWinScene();
         }
     }
 }

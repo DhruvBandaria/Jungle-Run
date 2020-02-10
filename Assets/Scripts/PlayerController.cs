@@ -55,8 +55,8 @@ public class PlayerController : MonoBehaviour
         if (onGround && Input.GetAxis("Jump") > 0)
         {
 
-            //rBody2d.velocity = new Vector2(0.0f, upForce);
-            rBody2d.AddForce(new Vector2(0, upForce), ForceMode2D.Impulse);
+            rBody2d.velocity = new Vector2(0.0f, upForce);
+            //rBody2d.AddForce(new Vector2(0, upForce), ForceMode2D.Impulse);
         }
 
     }
